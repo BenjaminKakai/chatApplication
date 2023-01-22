@@ -1,0 +1,10 @@
+Message format: Each message sent between the client and the server will be in the following format: [username]: [message]. This allows the server to easily identify the sender of the message and broadcast it to all connected clients.
+
+Message sending: The client will send messages to the server by writing the message to the output stream of the socket. The server will receive messages by reading from the input stream of the socket.
+
+Message receiving: When the server receives a message from a client, it will broadcast the message to all connected clients by writing the message to the output stream of each client's socket. Each client will receive the message by reading from its input stream.
+
+Handling Special message: The client can also send special messages to the server to indicate certain actions such as connecting or disconnecting from the chat. For example, a message in the format /connect [username] can be used to indicate that a new user is connecting to the chat, and the server can respond by broadcasting a message to all connected clients to notify them of the new user.
+
+Error handling: The protocol should include rules for handling errors such as invalid messages, disconnected clients, and other types of failures. For example, if the server receives an invalid message from a client, it can respond by sending an error message back to the client.
+
